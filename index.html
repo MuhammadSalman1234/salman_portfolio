@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muhammad Salman Yousuf | Data Analyst</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+            background: #ffffff;
+            color: #1f2937;
+            line-height: 1.6;
+        }
+
+        /* Side Navigation */
+        .sidenav {
+            position: fixed;
+            left: 0;
+            top: 0;
+            height: 100vh;
+            width: 280px;
+            background: linear-gradient(180deg, #1e40af 0%, #1e3a8a 100%);
+            padding: 2rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 4px 0 20px rgba(0,0,0,0.1);
+            z-index: 100;
+        }
+
+        .profile-section {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid rgba(255,255,255,0.1);
+        }
+
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #3b82f6, #60a5fa);
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+            border: 4px solid rgba(255,255,255,0.2);
+        }
+
+        .profile-name {
+            color: white;
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+        }
+
+        .profile-title {
+            color: #93c5fd;
+            font-size: 0.95rem;
+        }
+
+        .nav-menu {
+            list-style: none;
+            flex: 1;
+        }
+
+        .nav-menu li {
+            margin-bottom: 0.5rem;
+        }
+
+        .nav-menu a {
+            display: block;
+            color: #dbeafe;
+            text-decoration: none;
+            padding: 0.8rem 1rem;
+            border-radius: 8px;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .nav-menu a:hover {
+            background: rgba(255,255,255,0.15);
+            color: white;
+            padding-left: 1.5rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            padding-top: 1.5rem;
+            border-top: 2px solid rgba(255,255,255,0.1);
+        }
+
+        .social-links a {
+            color: #dbeafe;
+            font-size: 1.3rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: white;
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-left: 280px;
+            padding: 0;
+        }
+
+        section {
+            padding: 5rem 6%;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .container {
+            max-width: 1100px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.1), transparent);
+            border-radius: 50%;
+            top: -100px;
+            right: -100px;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            color: #1e40af;
+            margin-bottom: 1rem;
+            font-weight: 800;
+        }
+
+        .hero h2 {
+            font-size: 2rem;
+            color: #3b82f6;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            color: #4b5563;
+            max-width: 650px;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.9rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: #1e40af;
+            color: white;
+            box-shadow: 0 4px 15px rgba(30, 64, 175, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: #1e3a8a;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(30, 64, 175, 0.4);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #1e40af;
+            border: 2px solid #1e40af;
+        }
+
+        .btn-secondary:hover {
+            background: #1e40af;
+            color: white;
+        }
+
+        /* About Section */
+        .about {
+            background: white;
+        }
+
+        h2.section-title {
+            font-size: 2.5rem;
+            color: #1e40af;
+            margin-bottom: 1rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        h2.section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, #3b82f6, #60a5fa);
+            border-radius: 2px;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        .about-text p {
+            color: #4b5563;
+            margin-bottom: 1.2rem;
+            font-size: 1.05rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .stat-box {
+            background: linear-gradient(135deg, #eff6ff, #dbeafe);
+            padding: 1.8rem;
+            border-radius: 12px;
+            text-align: center;
+            border: 2px solid #bfdbfe;
+        }
+
+        .stat-box h3 {
+            font-size: 2.5rem;
+            color: #1e40af;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-box p {
+            color: #6b7280;
+            font-size: 0.95rem;
+            margin: 0;
+        }
+
+        /* Experience Section */
+        .experience {
+            background: #f9fafb;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+            margin-top: 2rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, #3b82f6, #93c5fd);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2.5rem;
+            padding-left: 2rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2.5rem;
+            top: 0;
+            width: 15px;
+            height: 15px;
+            background: #3b82f6;
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 0 0 3px #bfdbfe;
+        }
+
+        .timeline-item h3 {
+            color: #1e40af;
+            font-size: 1.4rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .timeline-item h4 {
+            color: #3b82f6;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-date {
+            color: #6b7280;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            display: inline-block;
+            background: #eff6ff;
+            padding: 0.3rem 0.8rem;
+            border-radius: 5px;
+        }
+
+        .timeline-item ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .timeline-item li {
+            color: #4b5563;
+            padding: 0.4rem 0 0.4rem 1.5rem;
+            position: relative;
+            line-height: 1.7;
+        }
+
+        .timeline-item li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: #3b82f6;
+            font-weight: bold;
+        }
+
+        /* Projects Section */
+        .projects {
+            background: white;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .project-card {
+            background: white;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 2rem;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #3b82f6, #60a5fa);
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.2);
+            border-color: #3b82f6;
+        }
+
+        .project-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-card h3 {
+            color: #1e40af;
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .project-card p {
+            color: #6b7280;
+            line-height: 1.7;
+        }
+
+        /* Skills Section */
+        .skills {
+            background: #f9fafb;
+        }
+
+        .skills-container {
+            margin-top: 2rem;
+        }
+
+        .skill-category {
+            margin-bottom: 2.5rem;
+        }
+
+        .skill-category h3 {
+            color: #1e40af;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .skill-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .skill-badge {
+            background: white;
+            color: #1e40af;
+            padding: 0.7rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 600;
+            border: 2px solid #bfdbfe;
+            transition: all 0.3s;
+        }
+
+        .skill-badge:hover {
+            background: #1e40af;
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(30, 64, 175, 0.3);
+        }
+
+        /* Contact Section */
+        .contact {
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .contact-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .contact-card .icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-card h3 {
+            color: #1e40af;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-card a {
+            color: #3b82f6;
+            text-decoration: none;
+            word-break: break-all;
+        }
+
+        .contact-card a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            background: #1e40af;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-left: 280px;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 968px) {
+            .sidenav {
+                width: 100%;
+                height: auto;
+                position: relative;
+            }
+
+            .main-content {
+                margin-left: 0;
+            }
+
+            footer {
+                margin-left: 0;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 3rem 5%;
+                min-height: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Side Navigation -->
+    <nav class="sidenav">
+        <div class="profile-section">
+            <div class="profile-img">MS</div>
+            <div class="profile-name">Salman Yousuf</div>
+            <div class="profile-title">Data Analyst</div>
+        </div>
+        
+        <ul class="nav-menu">
+            <li><a href="#home">🏠 Home</a></li>
+            <li><a href="#about">👤 About</a></li>
+            <li><a href="#experience">💼 Experience</a></li>
+            <li><a href="#projects">📊 Projects</a></li>
+            <li><a href="#skills">⚡ Skills</a></li>
+            <li><a href="#contact">📧 Contact</a></li>
+        </ul>
+        
+        <div class="social-links">
+            <a href="https://linkedin.com/in/hafizsalmanyousuf" target="_blank">💼</a>
+            <a href="mailto:hafizsalmanyousuf@gmail.com">📧</a>
+            <a href="tel:+923172879104">📱</a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Hero Section -->
+        <section class="hero" id="home">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>Muhammad Salman Yousuf</h1>
+                    <h2>Data Analyst & Business Intelligence Specialist</h2>
+                    <p>Transforming complex data into actionable insights through SQL, Power BI, and Python. With hands-on experience at Accenture and 360XpertsSolution, I specialize in building efficient data pipelines, creating compelling dashboards, and driving strategic decisions through analytics.</p>
+                    <div class="cta-buttons">
+                        <a href="#contact" class="btn btn-primary">Get In Touch</a>
+                        <a href="#projects" class="btn btn-secondary">View My Work</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="about" id="about">
+            <div class="container">
+                <h2 class="section-title">About Me</h2>
+                <div class="about-grid">
+                    <div class="about-text">
+                        <p>I'm a passionate Data Analyst with a Bachelor's degree in Data Science from DHA Suffa University. My journey in data analytics has been driven by curiosity and a desire to uncover meaningful patterns in complex datasets.</p>
+                        <p>Throughout my internships at leading organizations like Accenture and 360XpertsSolution, I've honed my skills in SQL query optimization, Power BI dashboard development, and building scalable data pipelines using modern technologies like Kafka and Docker.</p>
+                        <p>I thrive on turning raw data into strategic decisions and am constantly exploring new ways to leverage technology for data-driven solutions.</p>
+                    </div>
+                    <div class="stats-grid">
+                        <div class="stat-box">
+                            <h3>2</h3>
+                            <p>Professional Internships</p>
+                        </div>
+                        <div class="stat-box">
+                            <h3>4+</h3>
+                            <p>Major Projects</p>
+                        </div>
+                        <div class="stat-box">
+                            <h3>2</h3>
+                            <p>Certifications</p>
+                        </div>
+                        <div class="stat-box">
+                            <h3>2025</h3>
+                            <p>Graduation Year</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section class="experience" id="experience">
+            <div class="container">
+                <h2 class="section-title">Professional Experience</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <h3>360XpertsSolution</h3>
+                        <h4>Data Analyst Intern</h4>
+                        <span class="timeline-date">Aug 2024 – Oct 2024</span>
+                        <ul>
+                            <li>Developed efficient data pipelines using Kafka and Docker for real-time data processing</li>
+                            <li>Built interactive Power BI dashboards for business intelligence and reporting</li>
+                            <li>Performed advanced SQL queries on PostgreSQL databases for data analysis</li>
+                            <li>Utilized Python for data preprocessing and analytical tasks</li>
+                            <li>Collaborated with cross-functional teams to optimize data workflows</li>
+                        </ul>
+                    </div>
+
+                    <div class="timeline-item">
+                        <h3>Vibrent Tech</h3>
+                        <h4>Front-End Developer Intern</h4>
+                        <span class="timeline-date">Apr 2024 – Jul 2024</span>
+                        <ul>
+                            <li>Designed and developed responsive user interfaces using HTML, CSS, and JavaScript</li>
+                            <li>Created intuitive UI/UX designs that enhanced user experience</li>
+                            <li>Collaborated with design teams to implement layout improvements</li>
+                            <li>Ensured cross-browser compatibility and mobile responsiveness</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section class="projects" id="projects">
+            <div class="container">
+                <h2 class="section-title">Featured Projects</h2>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="project-icon">🔄</div>
+                        <h3>Dynamic Data Sync System</h3>
+                        <p>Implemented real-time streaming system using Kafka and MySQL with Docker containerization for seamless live data movement and synchronization across multiple databases.</p>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-icon">📊</div>
+                        <h3>Real-Time Analytics Platform</h3>
+                        <p>Built comprehensive analytics platform using Kafka consumers to monitor and analyze event streams in real-time, enabling instant business insights and decision-making.</p>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-icon">📈</div>
+                        <h3>Retail Sales Dashboards</h3>
+                        <p>Created interactive Excel dashboards featuring PivotTables, slicers, and VLOOKUP functions to track and visualize key retail performance indicators for data-driven decisions.</p>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-icon">🤖</div>
+                        <h3>Interactive Storytelling Chatbot</h3>
+                        <p>Developed an intelligent chatbot using Python, NLTK, and Pandas that creates engaging interactive stories based on user inputs and natural language processing.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section class="skills" id="skills">
+            <div class="container">
+                <h2 class="section-title">Skills & Technologies</h2>
+                <div class="skills-container">
+                    <div class="skill-category">
+                        <h3>Data Analysis & BI</h3>
+                        <div class="skill-items">
+                            <span class="skill-badge">SQL</span>
+                            <span class="skill-badge">Power BI</span>
+                            <span class="skill-badge">Excel</span>
+                            <span class="skill-badge">Data Mining</span>
+                            <span class="skill-badge">Business Intelligence</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3>Programming & Development</h3>
+                        <div class="skill-items">
+                            <span class="skill-badge">Python</span>
+                            <span class="skill-badge">JavaScript</span>
+                            <span class="skill-badge">HTML/CSS</span>
+                            <span class="skill-badge">Pandas</span>
+                            <span class="skill-badge">NLTK</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3>Data Engineering & Infrastructure</h3>
+                        <div class="skill-items">
+                            <span class="skill-badge">Kafka</span>
+                            <span class="skill-badge">Docker</span>
+                            <span class="skill-badge">PostgreSQL</span>
+                            <span class="skill-badge">MySQL</span>
+                            <span class="skill-badge">SQL Server</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3>Additional Skills</h3>
+                        <div class="skill-items">
+                            <span class="skill-badge">Machine Learning</span>
+                            <span class="skill-badge">Prompt Engineering</span>
+                            <span class="skill-badge">Server Management</span>
+                            <span class="skill-badge">Network Monitoring</span>
+                            <span class="skill-badge">Communication</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact" id="contact">
+            <div class="container">
+                <h2 class="section-title">Get In Touch</h2>
+                <p style="color: #4b5563; font-size: 1.1rem; margin-bottom: 2rem;">I'm always open to discussing new opportunities, data analytics projects, or collaboration ideas. Let's connect and create something amazing together!</p>
+                <div class="contact-grid">
+                    <div class="contact-card">
+                        <div class="icon">📧</div>
+                        <h3>Email</h3>
+                        <a href="mailto:hafizsalmanyousuf@gmail.com">hafizsalmanyousuf@gmail.com</a>
+                    </div>
+
+                    <div class="contact-card">
+                        <div class="icon">📱</div>
+                        <h3>Phone</h3>
+                        <a href="tel:+923172879104">+92 317 2879104</a>
+                    </div>
+
+                    <div class="contact-card">
+                        <div class="icon">💼</div>
+                        <h3>LinkedIn</h3>
+                        <a href="https://linkedin.com/in/hafizsalmanyousuf" target="_blank">View Profile</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Muhammad Salman Yousuf. Crafted with data and dedication.</p>
+    </footer>
+
+    <script>
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.project-card, .timeline-item, .stat-box').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
